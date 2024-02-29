@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat Bot</title>
+    <link rel="stylesheet" href="/static/CSS/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+      <!-- <link rel="stylesheet" type="text/css" href="static/CSS/index.css" /> -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body style="background-color: lavender">
+    <nav class="navbar navbar-expand-sm sticky-top" style="background-color:rgba(45, 45, 170, 0.763); ">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="/static/zamindari.png" alt="logo"
+              style="height:70px;width:120%;border-radius: 30%;">&nbsp; </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <i class="fa fa-bars" aria-hidden="true"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto" style="float:right;">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#" style="color:white;font-weight: bold;font-size:24px">ABOUT</a>
+                    </li>
+                    <!-- <li class="nav-item active">
+                      <a class="nav-link" href="signup.html" style="color:white;font-weight: bold;font-size:24px">SignUp</a>
+                  </li> -->
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li> -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="banner">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="main-title">Welcome to Zamindari</div>
+            <div id="chat-container"></div>
+            <center>
+              <input type="text" id="user-message" placeholder="Ask question...." autofocus />
+              <button id="send-button" type="submit"><i class="fa fa-paper-plane fa-lg"></i></button>
+              <button type="submit" id="startButton"><i class="fa fa-microphone fa-lg"></i></button>
+              <button type="submit" id="stopButton"><i class="fa fa-microphone-slash fa-lg" style="--fa-primary-color: #ffffff; --fa-secondary-color: #ffffff;"></i></button>
+              <button type="submit" id="placeOrder" style="background-color: rgba(0, 0, 255, 0.763); color:white;" onclick="changeButtonColor()">Place Order</button>
+            
+            </center>
+          </div>
+          
+          <div class="col-md-6 text-center" style="margin-top: 1%;">
+            <div id="table-content" align="center">
+              <!-- Add tab components here -->
+              <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <a class="nav-link active" id="menu-tab" data-bs-toggle="tab" href="#menu-content" role="tab" aria-controls="menu-content" aria-selected="true" style="font-size:22px;font-weight: 500;">Menu</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <a class="nav-link" id="order-tab" data-bs-toggle="tab" href="#order-summary" role="tab" aria-controls="order-summary" aria-selected="false" style="font-size:22px;font-weight: 500;">Order</a>
+                </li>
+              </ul>
+              <div class="tab-content">
+                <div class="tab-pane fade show active" id="menu-content" role="tabpanel" aria-labelledby="menu-tab">
+                  <!-- Menu content goes here -->
+                  <div class="table-container">
+                    <table id="menu">
+                      <thead>
+                        <tr>
+                          <th>Item</th>
+                          <th>Cost (in Rs.)</th>
+                        </tr>
+                      </thead>
+                      <tbody style="height:500px">
+                        
+                        <tr style="background-color: red; color : white;"><td colspan="2"><b>Combos</b></td></tr>
+                        <tr><td><b>Haveli Special Kulcha with Chana Combo (CHEF'S SPECIAL)</b></td><td><b>299 /-</b></td></tr>
+                        <tr><td><b>Gobhi Kulcha with Chana Combo</b></td><td><b>249 /-</b></td></tr>
+                        <tr><td><b>Mixed Veg Kulcha with Chana Combo</b></td><td><b>279 /-</b></td></tr>
+                        <tr><td><b>Onion Kulcha with Chana Combo</b></td><td><b>279 /-</b></td></tr>
+                        <tr><td><b>Paneer Kulcha with Chana Combo</b></td><td><b>299 /-</b></td></tr>
+                        <tr><td><b>Stuffed Cheese Kulcha with Chana Combo</b></td><td><b>359 /-</b></td></tr>
+                        <tr><td><b>Stuffed Aloo Kulcha with Chana Combo</b></td><td><b>259 /-</b></td></tr>
+                        <tr><td><b>Garlic Kulcha with Chana Combo</b></td><td><b>209 /-</b></td></tr>
+
+                        <tr style="background-color: red; color : white;"><td colspan="2"><b>Soups</b></td></tr>
+                        <tr><td><b>Sweet Corn Soup</b></td><td><b>239 /-</b></td></tr>
+                        <tr><td><b>Veg Clear Soup</b></td><td><b>239 /-</b></td></tr>
+                        <tr><td><b>Cream of Tomato Soup</b></td><td><b>239 /-</b></td></tr>
+                        <tr><td><b>Hot & Sour Soup</b></td><td><b>239 /-</b></td></tr>
+                        <tr><td><b>Manchow Soup</b></td><td><b>239 /-</b></td></tr>
+                        <tr><td><b>Talumain Soup</b></td><td><b>239 /-</b></td></tr>
+                        <tr><td><b>Lemon Coriander Soup</b></td><td><b>239 /-</b></td></tr>
+
+                        <tr style="background-color: red; color : white;"><td colspan="2"><b>Salad</b></td></tr>
+                        <tr><td><b>Green Salad [200 grams]</b></td><td><b>169 /-</b></td></tr>
+
+                        <tr style="background-color: red; color : white;"><td colspan="2"><b>Starters</b></td></tr>
+                        <tr><td><b>Haveli Paneer Tikka [8 Pieces] (CHEF'S SPECIAL)</b></td><td><b>429 /-</b></td></tr>
+                        <tr><td><b>Achari Paneer Tikka [8 Pieces]</b></td><td><b>409 /-</b></td></tr>
+                        <tr><td><b>Stuffed Paneer Tikka [8 Pieces]</b></td><td><b>469 /-</b></td></tr>
+                        <tr><td><b>Malai Paneer Tikka [8 Pieces]</b></td><td><b>429 /-</b></td></tr>
+                        <tr><td><b>Haryali Paneer Tikka [8 Pieces]</b></td><td><b>429 /-</b></td></tr>
+                        <tr><td><b>Haveli Mushroom Tikka [12 Pieces] (CHEF'S SPECIAL)</b></td><td><b>429 /-</b></td></tr>
+                        <tr><td><b>Achari Mushroom Tikka [12 Pieces]</b></td><td><b>409 /-</b></td></tr>
+                        <tr><td><b>Stuffed Mushroom Tikka [8 Pieces]</b></td><td><b>409 /-</b></td></tr>
+                        <tr><td><b>Veg Seekh Kebab [4 Pieces]</b></td><td><b>429 /-</b></td></tr>
+                        <tr><td><b>Malai Broccoli [8 Pieces]</b></td><td><b>459 /-</b></td></tr>
+                        <tr><td><b>Soya Malai Chaap (8 Pieces]</b></td><td><b>429 /-</b></td></tr>
+                        <tr><td><b>Soya Achari Chaap [8 Pieces]</b></td><td><b>429 /-</b></td></tr>
+                        <tr><td><b>Afghani Chaap</b></td><td><b>429 /-</b></td></tr>
+                        <tr><td><b>Soya Cheese Chaap</b></td><td><b>429 /-</b></td></tr>
+                        <tr><td><b>Hara Bhara Kebab [8 Pieces]</b></td><td><b>429 /-</b></td></tr>
+                        <tr><td><b>Dragon Paneer</b></td><td><b>419 /-</b></td></tr>
+                        <tr><td><b>Thai Basil Paneer</b></td><td><b>429 /-</b></td></tr>
+                        <tr><td><b>Mushroom Black Pepper</b></td><td><b>449 /-</b></td></tr>
+                        <tr><td><b>Thai Pepper Corn Cheese Roll</b></td><td><b>479 /-</b></td></tr>
+                        <tr><td><b>Water Cashew Nut in Hot Garlic Sauce</b></td><td><b>449 /-</b></td></tr>
+                        <tr><td><b>Stuffed Golden Fry Mushroom</b></td><td><b>479 /-</b></td></tr>
+                        <tr><td><b>Stuffed Thai Basil Paneer Tikka</b></td><td><b>479 /-</b></td></tr>
+                        <tr><td><b>Kaju Creamy Tikki Kebab</b></td><td><b>479 /-</b></td></tr>
+                        <tr><td><b>Makki Malai Seekh Kebab</b></td><td><b>449 /-</b></td></tr>
+                        <tr><td><b>Beetroot Cheese Tikki Kebab</b></td><td><b>479 /-</b></td></tr>
+
+                        <tr style="background-color: red; color : white;"><td colspan="2"><b>Main Course</b></td></tr>
+                        <tr><td><b>Haveli Special Black Dal Fry (CHEF'S SPECIAL)</b></td><td><b>539 /-</b></td></tr>
+                        <tr><td><b>Dal Makhani</b></td><td><b>429 /-</b></td></tr>
+                        <tr><td><b>Yellow Dal</b></td><td><b>369 /-</b></td></tr>
+                        <tr><td><b>Yellow Dal Fry</b></td><td><b>379 /-</b></td></tr>
+                        <tr><td><b>Haveli Special Paneer (CHEF'S SPECIAL)</b></td><td><b>489 /-</b></td></tr>
+                        <tr><td><b>Paneer Tikka Butter Masala</b></td><td><b>429 /-</b></td></tr>
+                        <tr><td><b>Paneer Lababdar</b></td><td><b>429 /-</b></td></tr>
+                        <tr><td><b>Kadhai Paneer</b></td><td><b>429 /-</b></td></tr>
+                        <tr><td><b>Paneer Bhurji</b></td><td><b>429 /-</b></td></tr>
+                        <tr><td><b>Palak Paneer</b></td><td><b>409 /-</b></td></tr>
+                        <tr><td><b>Shahi Paneer</b></td><td><b>409 /-</b></td></tr>
+                        <tr><td><b>Tomato Paneer</b></td><td><b>409 /-</b></td></tr>
+                        <tr><td><b>Matar Paneer</b></td><td><b>409 /-</b></td></tr>
+                        <tr><td><b>Paneer Makhani</b></td><td><b>419 /-</b></td></tr>
+                        <tr><td><b>Paneer Pasanda</b></td><td><b>419 /-</b></td></tr>
+                        <tr><td><b>Mix Veg</b></td><td><b>379 /-</b></td></tr>
+                        <tr><td><b>Roasted Mushroom Masala</b></td><td><b>419 /-</b></td></tr>
+                        <tr><td><b>Mushroom Do Pyaza</b></td><td><b>409 /-</b></td></tr>
+                        <tr><td><b>Palak Mushroom</b></td><td><b>409 /-</b></td></tr>
+                        <tr><td><b>Mushroom Matar Masala</b></td><td><b>419 /-</b></td></tr>
+                        <tr><td><b>Gobhi Aloo Masala</b></td><td><b>379 /-</b></td></tr>
+                        <tr><td><b>Chana Masala</b></td><td><b>379 /-</b></td></tr>
+                        <tr><td><b>Rajma Masala</b></td><td><b>379 /-</b></td></tr>
+                        <tr><td><b>Cheese Butter Masala</b></td><td><b>489 /-</b></td></tr>
+                        <tr><td><b>Malai Kofta</b></td><td><b>419 /-</b></td></tr>
+                        <tr><td><b>Punjabi Kofta</b></td><td><b>419 /-</b></td></tr>
+                        <tr><td><b>Jeera Aloo</b></td><td><b>379 /-</b></td></tr>
+                        <tr><td><b>Dum Aloo</b></td><td><b>379 /-</b></td></tr>
+                        <tr><td><b>Veg Kolhapuri</b></td><td><b>399 /-</b></td></tr>
+                        <tr><td><b>Paneer Methi Chaman</b></td><td><b>449 /-</b></td></tr>
+                        <tr><td><b>Paneer Khurchan</b></td><td><b>449 /-</b></td></tr>
+                        <tr><td><b>Kaju Paneer Masala</b></td><td><b>479 /-</b></td></tr>
+                        <tr><td><b>Vegetable Diwani Handi</b></td><td><b>429 /-</b></td></tr>
+                        <tr><td><b>Soya Shahi Chaap Gravy</b></td><td><b>429 /-</b></td></tr>
+                        <tr><td><b>Paneer Chatnar</b></td><td><b>429 /-</b></td></tr>
+                        <tr><td><b>Soya Chaap Lababdar</b></td><td><b>399 /-</b></td></tr>
+                        <tr><td><b>Makhani Paneer Bhurji</b></td><td><b>449 /-</b></td></tr>
+                        <tr><td><b>Kaju Tomato</b></td><td><b>449 /-</b></td></tr>
+                        <tr><td><b>Mix Veg Bharta</b></td><td><b>389 /-</b></td></tr>
+
+                        <tr style="background-color: red; color : white;"><td colspan="2"><b>Breads</b></td></tr>
+                        <tr><td><b>Aloo Paratha (Served with curd)</b></td><td><b>249 /-</b></td></tr>
+                        <tr><td><b>Gobi Paratha (Served with curd)</b></td><td><b>249 /-</b></td></tr>
+                        <tr><td><b>Paneer Paratha (Served with curd)</b></td><td><b>299 /-</b></td></tr>
+                        <tr><td><b>Tandoori Roti</b></td><td><b>59 /-</b></td></tr>
+                        <tr><td><b>Tandoori Butter Roti</b></td><td><b>169 /-</b></td></tr>
+                        <tr><td><b>Plain Naan</b></td><td><b>99 /-</b></td></tr>
+                        <tr><td><b>Butter Naan</b></td><td><b>109 /-</b></td></tr>
+                        <tr><td><b>Lachha Paratha</b></td><td><b>109 /-</b></td></tr>
+                        <tr><td><b>Lal Mirch Paratha</b></td><td><b>109 /-</b></td></tr>
+                        <tr><td><b>Hari Mirch Paratha</b></td><td><b>109 /-</b></td></tr>
+                        <tr><td><b>Methi Paratha</b></td><td><b>109 /-</b></td></tr>
+                        <tr><td><b>Missi Roti</b></td><td><b>199 /-</b></td></tr>
+                        <tr><td><b>Garlic Naan</b></td><td><b>119 /-</b></td></tr>
+                        <tr><td><b>Chur Chur Naan</b></td><td><b>229 /-</b></td></tr>
+                        <tr><td><b>Plain Tawa Roti</b></td><td><b>59 /-</b></td></tr>
+                        <tr><td><b>Tawa Butter Roti</b></td><td><b>69 /-</b></td></tr>
+                        <tr><td><b>Tawa Plain Paratha</b></td><td><b>79 /-</b></td></tr>
+                        <tr><td><b>Aloo Tawa Paratha</b></td><td><b>139 /-</b></td></tr>
+                        <tr><td><b>Gobhi Tawa Paratha</b></td><td><b>159 /-</b></td></tr>
+                        <tr><td><b>Paneer Tawa Paratha</b></td><td><b>169 /-</b></td></tr>
+                        <tr><td><b>Rumali Roti</b></td><td><b>79 /-</b></td></tr>
+                        <tr><td><b>Missi Onion Roti</b></td><td><b>119 /-</b></td></tr>
+                        <tr><td><b>Cheese Naan</b></td><td><b>219 /-</b></td></tr>
+                        <tr><td><b>Kashmiri Naan</b></td><td><b>219 /-</b></td></tr>
+
+                        <tr style="background-color: red; color : white;"><td colspan="2"><b>Rice & Biryani</b></td></tr>
+                        <tr><td><b>Plain Rice</b></td><td><b>219 /-</b></td></tr>
+                        <tr><td><b>Jeera Rice</b></td><td><b>239 /-</b></td></tr>
+                        <tr><td><b>Veg Pulao</b></td><td><b>359 /-</b></td></tr>
+                        <tr><td><b>Matar Pulao</b></td><td><b>359 /-</b></td></tr>
+                        <tr><td><b>Kashmiri Pulao</b></td><td><b>479 /-</b></td></tr>
+                        <tr><td><b>Plain Khichdi</b></td><td><b>339 /-</b></td></tr>
+                        <tr><td><b>Masala Khichdi</b></td><td><b>359 /-</b></td></tr>
+                        <tr><td><b>Veg Biryani</b></td><td><b>359 /-</b></td></tr>
+
+                        <tr style="background-color: red; color : white;"><td colspan="2"><b>Chinese</b></td></tr>
+                        <tr><td><b>Chilli Paneer Dry</b></td><td><b>409 /-</b></td></tr>
+                        <tr><td><b>Chilli Paneer Gravy</b></td><td><b>420 /-</b></td></tr>
+                        <tr><td><b>Garlic Paneer</b></td><td><b>379 /-</b></td></tr>
+                        <tr><td><b>Schezwan Paneer Dry</b></td><td><b>429 /-</b></td></tr>
+                        <tr><td><b>Paneer 65</b></td><td><b>429 /-</b></td></tr>
+                        <tr><td><b>Gobhi 65</b></td><td><b>359 /-</b></td></tr>
+                        <tr><td><b>Veg Manchurian Dry</b></td><td><b>409 /-</b></td></tr>
+                        <tr><td><b>Veg Manchurian Gravy</b></td><td><b>419 /-</b></td></tr>
+                        <tr><td><b>Veg Crispy</b></td><td><b>319 /-</b></td></tr>
+                        <tr><td><b>Chilli Mushroom Dry</b></td><td><b>429 /-</b></td></tr>
+                        <tr><td><b>Chilli Potato</b></td><td><b>319 /-</b></td></tr>
+                        <tr><td><b>Honey Chilli Potato</b></td><td><b>379 /-</b></td></tr>
+                        <tr><td><b>Honey Chilli Cauliflower</b></td><td><b>379 /-</b></td></tr>
+                        <tr><td><b>Chilli Soyabean</b></td><td><b>379 /-</b></td></tr>
+                        <tr><td><b>Chilli Soya Chaap</b></td><td><b>429 /-</b></td></tr>
+                        <tr><td><b>Crispy Corn</b></td><td><b>429 /-</b></td></tr>
+                        <tr><td><b>Crispy Baby Corn in Hot Chilly Sauce</b></td><td><b>429 /-</b></td></tr>
+                        <tr><td><b>Vegetables in Sweet & Sour Sauce</b></td><td><b>409 /-</b></td></tr>
+
+                        <tr style="background-color: red; color : white;"><td colspan="2"><b>Fried Rice</b></td></tr>
+                        <tr><td><b>Paneer Schezwan Fried Rice</b></td><td><b>379 /-</b></td></tr>
+                        <tr><td><b>Schezwan Fried Rice</b></td><td><b>379 /-</b></td></tr>
+                        <tr><td><b>Fried Rice</b></td><td><b>379 /-</b></td></tr>
+
+                        <tr style="background-color: red; color : white;"><td colspan="2"><b>Noodles</b></td></tr>
+                        <tr><td><b>Veg Chowmein</b></td><td><b>359 /-</b></td></tr>
+                        <tr><td><b>Veg Schezwan Chowmein</b></td><td><b>379 /-</b></td></tr>
+                        <tr><td><b>Veg Hakka Noodles</b></td><td><b>359 /-</b></td></tr>
+                        <tr><td><b>Veg Chopsuey</b></td><td><b>379 /-</b></td></tr>
+                        <tr><td><b>Cheese Garlic Noodles</b></td><td><b>399 /-</b></td></tr>
+                        <tr><td><b>Chinese Chopsuey</b></td><td><b>429 /-</b></td></tr>
+
+                        <tr style="background-color: red; color : white;"><td colspan="2"><b>Snacks</b></td></tr>
+                        <tr><td><b>Paneer Pakoda [8 Pieces]</b></td><td><b>379 /-</b></td></tr>
+                        <tr><td><b>Veg Pakoda [8 Pieces]</b></td><td><b>279 /-</b></td></tr>
+                        <tr><td><b>French Fries</b></td><td><b>249 /-</b></td></tr>
+                        <tr><td><b>Garlic Bread [4 Pieces]</b></td><td><b>259 /-</b></td></tr>
+                        <tr><td><b>Cheese Garlic Bread [4 Pieces]</b></td><td><b>279 /-</b></td></tr>
+                        <tr><td><b>Honey Chilli Potato</b></td><td><b>279 /-</b></td></tr>
+                        <tr><td><b>Chilli Soya Chaap</b></td><td><b>399 /-</b></td></tr>
+
+                        <tr style="background-color: red; color : white;"><td colspan="2"><b>Desserts</b></td></tr>
+                        <tr><td><b>Gulab Jamun [4 Pieces]</b></td><td><b>179 /-</b></td></tr>
+                        <tr><td><b>Rasmalai [2 Pieces]</b></td><td><b>179 /-</b></td></tr>
+                        <tr><td><b>Kesar Pista Rasmalai [2 Pieces]</b></td><td><b>199 /-</b></td></tr>
+                        <tr><td><b>Moong Dal Halwa</b></td><td><b>179 /-</b></td></tr>
+                        <tr><td><b>Shahi Tukda</b></td><td><b>179 /-</b></td></tr>
+                        <tr><td><b>Gajar Ka Halwa</b></td><td><b>189 /-</b></td></tr>
+                        <tr><td><b>Sizzling Brownie with Ice Cream</b></td><td><b>249 /-</b></td></tr>
+                        <tr><td><b>Honey Noodles with Ice Cream</b></td><td><b>249 /-</b></td></tr>
+                        <tr><td><b>Ice Cream Sundae</b></td><td><b>229 /-</b></td></tr>
+                        <tr><td><b>Hot Chocolate Fudge</b></td><td><b>259 /-</b></td></tr>
+                        <tr><td><b>Haveli Special Faluda Kulfi</b></td><td><b>249 /-</b></td></tr>
+                        <tr><td><b>Darsaan with Ice Cream</b></td><td><b>249 /-</b></td></tr>
+                        <tr><td><b>Coconut Delight with Ice Cream</b></td><td><b>249 /-</b></td></tr>
+                        <tr><td><b>Sticky Toffee Pudding</b></td><td><b>259 /-</b></td></tr>
+                        <tr><td><b>Fruit Cream</b></td><td><b>179 /-</b></td></tr>
+                        <tr><td><b>Fruit Salad with Ice Cream</b></td><td><b>189 /-</b></td></tr>
+                        <tr><td><b>Caramel Custard</b></td><td><b>179 /-</b></td></tr>
+                        <tr><td><b>Shahi Phirni</b></td><td><b>179 /-</b></td></tr>
+                        <tr><td><b>Kesar Kheer</b></td><td><b>159 /-</b></td></tr>
+                        <tr><td><b>Plain Kulfi</b></td><td><b>159 /-</b></td></tr>
+                        <tr><td><b>Mango Kulfi</b></td><td><b>179 /-</b></td></tr>
+                        <tr><td><b>Pista Kulfi</b></td><td><b>179 /-</b></td></tr>
+                        <tr><td><b>Malai Kulfi</b></td><td><b>179 /-</b></td></tr>
+                        <tr><td><b>Honey Nut Crunch Kulfi</b></td><td><b>189 /-</b></td></tr>
+                        <tr><td><b>Ice Cream Scoop</b></td><td><b>99 /-</b></td></tr>
+                        <tr><td><b>Choco Chips Ice Cream</b></td><td><b>119 /-</b></td></tr>
+                        <tr><td><b>Strawberry Ice Cream</b></td><td><b>119 /-</b></td></tr>
+                        <tr><td><b>Vanilla Ice Cream</b></td><td><b>99 /-</b></td></tr>
+                        <tr><td><b>Chocolate Ice Cream</b></td><td><b>119 /-</b></td></tr>
+                        <tr><td><b>Butterscotch Ice Cream</b></td><td><b>119 /-</b></td></tr>
+                        <tr><td><b>Mango Ice Cream</b></td><td><b>119 /-</b></td></tr>
+                        <tr><td><b>Pista Ice Cream</b></td><td><b>119 /-</b></td></tr>
+                        <tr><td><b>Kesar Pista Ice Cream</b></td><td><b>119 /-</b></td></tr>
+                        <tr><td><b>Mango Shake</b></td><td><b>99 /-</b></td></tr>
+                        <tr><td><b>Butterscotch Shake</b></td><td><b>99 /-</b></td></tr>
+                        <tr><td><b>Strawberry Shake</b></td><td><b>99 /-</b></td></tr>
+                        <tr><td><b>Vanilla Shake</b></td><td><b>79 /-</b></td></tr>
+                        <tr><td><b>Chocolate Shake</b></td><td><b>99 /-</b></td></tr>
+                        <tr><td><b>Pista Shake</b></td><td><b>99 /-</b></td></tr>
+                        <tr><td><b>Kesar Pista Shake</b></td><td><b>119 /-</b></td></tr>
+                        <tr><td><b>Oreo Shake</b></td><td><b>129 /-</b></td></tr>
+                        <tr><td><b>Kit Kat Shake</b></td><td><b>129 /-</b></td></tr>
+                        <tr><td><b>Ferrero Rocher Shake</b></td><td><b>139 /-</b></td></tr>
+                        <tr><td><b>Butterscotch Ice Cream Soda</b></td><td><b>119 /-</b></td></tr>
+                        <tr><td><b>Blue Lagoon</b></td><td><b>119 /-</b></td></tr>
+                        <tr><td><b>Mint Cooler</b></td><td><b>119 /-</b></td></tr>
+                        <tr><td><b>Fresh Lime Soda</b></td><td><b>89 /-</b></td></tr>
+                        <tr><td><b>Fresh Lime Water</b></td><td><b>79 /-</b></td></tr>
+                        <tr><td><b>Jaljeera</b></td><td><b>69 /-</b></td></tr>
+                        <tr><td><b>Thums Up</b></td><td><b>59 /-</b></td></tr>
+                        <tr><td><b>Coca Cola</b></td><td><b>59 /-</b></td></tr>
+                        <tr><td><b>Sprite</b></td><td><b>59 /-</b></td></tr>
+                        <tr><td><b>Mountain Dew</b></td><td><b>59 /-</b></td></tr>
+                        <tr><td><b>Frooti</b></td><td><b>59 /-</b></td></tr>
+                        <tr><td><b>Maaza</b></td><td><b>59 /-</b></td></tr>
+                        <tr><td><b>Lassi (Sweet / Salted)</b></td><td><b>99 /-</b></td></tr>
+                        <tr><td><b>Butter Milk</b></td><td><b>49 /-</b></td></tr>
+                        <tr><td><b>Shikanji</b></td><td><b>69 /-</b></td></tr>
+                        <tr><td><b>Hot Coffee</b></td><td><b>69 /-</b></td></tr>
+                        <tr><td><b>Hot Tea</b></td><td><b>49 /-</b></td></tr>
+                        <tr><td><b>Hot Chocolate</b></td><td><b>89 /-</b></td></tr>
+                        
+
+                        
+                        
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                
+                <div class="tab-pane" id="order-summary" role="tabpanel" aria-labelledby="order-tab" style="height: 535px;">
+                  <div id="order-summary-content" style="background-color: white;"></div>
+                  <div id="payment-image" style="display: none;">
+                    <!-- QR code image will be displayed here -->
+                    <img id="qrCodeImage" src="" alt="Payment QR Code" width="50%" height="300px"/>
+                  </div>
+                  <button id="makePaymentButton" class="btn btn-primary mt-3" style="display: none;">Make Payment</button>
+                </div>  
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>     
+    <script>
+    function displayOrderSummary(orderSummary) {
+  const orderSummaryContentDiv = document.getElementById('order-summary-content');
+  orderSummaryContentDiv.innerHTML = ''; // Clear existing content
+  
+  // Create a new table element to display the order summary
+  const table = document.createElement('table');
+  table.classList.add('table', 'table-bordered');
+
+  // Create the table header
+  const thead = document.createElement('thead');
+  const headerRow = document.createElement('tr');
+  const headerItem = document.createElement('th');
+  headerItem.textContent = 'Item Name';
+  headerRow.appendChild(headerItem);
+  const headerQuantity = document.createElement('th');
+  headerQuantity.textContent = 'Quantity';
+  headerRow.appendChild(headerQuantity);
+  const headerPrice = document.createElement('th');
+  headerPrice.textContent = 'Price';
+  headerRow.appendChild(headerPrice);
+  thead.appendChild(headerRow);
+  table.appendChild(thead);
+
+  // Create the table body
+  const tbody = document.createElement('tbody');
+  let totalAmount = 0; // Variable to store the total amount
+  for (const item of orderSummary) {
+        const row = document.createElement('tr');
+        const itemName = document.createElement('td');
+        itemName.textContent = item.item_name;
+        row.appendChild(itemName);
+
+        const itemQuantity = document.createElement('td');
+        itemQuantity.textContent = item.quantity;
+        row.appendChild(itemQuantity);
+
+        const itemPrice = document.createElement('td');
+        itemPrice.textContent = item.price;
+        row.appendChild(itemPrice);
+
+        tbody.appendChild(row);
+
+        // Calculate and accumulate the total amount
+        totalAmount += item.quantity * item.price;
+    }
+  table.appendChild(tbody);
+
+  // Append the table to the order-summary-content div
+  orderSummaryContentDiv.appendChild(table);
+
+  // Create a paragraph element for the total amount
+  const totalAmountElement = document.createElement('p');
+  totalAmountElement.textContent = `Total Amount: Rs. ${totalAmount}`;
+
+  orderSummaryContentDiv.appendChild(totalAmountElement);
+
+  // Show the "Make Payment" button
+  const makePaymentButton = document.getElementById('makePaymentButton');
+  makePaymentButton.style.display = 'block';
+
+  // Trigger a click event on the "Order" tab to switch to it
+  const orderTab = document.getElementById('order-tab');
+  orderTab.click();
+}
+
+
+function fetchOrderSummaryAndDisplay() {
+    // Fetch the session_id from cookies
+    const sessionId = document.cookie
+        .split('; ')
+        .find(row => row.startsWith('session_id='))
+        .split('=')[1];
+
+    axios.get('/get_order_summary', {
+        params: {
+            session_id: sessionId
+        }
+    })
+    .then(response => {
+        displayOrderSummary(response.data);
+    })
+    .catch(error => {
+        console.error('Error loading order summary:', error);
+    });
+
+
+}
+
+  function makePayment() {
+    // Replace this with your payment handling logic
+    const sessionId = document.cookie
+        .split('; ')
+        .find(row => row.startsWith('session_id='))
+        .split('=')[1];
+    
+    // Get the payment image element
+    const paymentImage = document.getElementById('qrCodeImage');
+
+    // Set the QR code image source URL using a template literal
+    paymentImage.src = `/static/upi_qr_code_${sessionId}.png`; // Use backticks
+
+    // Display the payment image
+    const paymentImageDiv = document.getElementById('payment-image');
+    paymentImageDiv.style.display = 'block';
+}
+
+  // Attach an event listener to the "Place Order" button
+  const placeOrderButton = document.getElementById('placeOrder');
+  
+  placeOrderButton.addEventListener('click', fetchOrderSummaryAndDisplay);
+
+  // Attach an event listener to the "Make Payment" button
+  const makePaymentButton = document.getElementById('makePaymentButton');
+  makePaymentButton.addEventListener('click', makePayment);
+</script>
+<script>function changeButtonColor() {
+  var button = document.getElementById('placeOrder');
+
+  button.style.backgroundColor = 'green'; // Change the color to green
+  
+  // Use setTimeout to delay the alert
+  setTimeout(function() {
+      alert("Order placed successfully");
+  }, 2000);
+  
+  button.style.backgroundColor = 'blue';
+}
+
+
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.3/axios.min.js"></script>
+<script src="/static/JS/app1.js"></script>
+</body>
+</html>
